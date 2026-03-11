@@ -1,11 +1,21 @@
 #include <iostream>
 #include <utility>
 
-void insertion_sort(int* array, int n){
+void insertion_sort_swap(int* array, int n){
     for(int i = 1; i < n; ++i){
         for(int j = i; j > 0 && array[j] < array[j - 1]; --j){
             std::swap(array[j], array[j - 1]);
         }
+    }
+}
+void insertion_sort(int* array, int n){
+    for(int i = 1; i < n; ++i){
+        int j = i - 1;
+        int value = array[i];
+        for(; j >= 0 && value < array[j]; --j){
+            array[j + 1] = array[j];
+        }
+        array[j + 1] = value;
     }
 }
 
